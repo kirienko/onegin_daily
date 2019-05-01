@@ -3,7 +3,9 @@ Onegin daily
 Twitter bot in python
 ---------------------
 
-Once upon a time famous Russian poet Pushkin wrote his famous 
+See here: https://twitter.com/onegin_daily
+
+Once upon a time the famous Russian poet Pushkin wrote his famous 
 poem ["Eugene Onegin"](https://en.wikipedia.org/wiki/Eugene_Onegin).
 
 Much later, just for fun, I wrote a trivial twitter bot,
