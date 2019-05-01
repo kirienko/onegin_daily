@@ -1,6 +1,6 @@
 Onegin daily
 ============
-Twitter bot in python
+Twitter Bot in Python
 ---------------------
 
 See here: https://twitter.com/onegin_daily
@@ -41,8 +41,8 @@ A source file looks like this:
                           Кн. Вяземский.
     I
 
-The bot takes a tweet file and split it using the `\\` as a separator.
-Each split is a single tweet. That means that this will be tweeted first:
+The bot takes a tweet file and splits it using the `\\` as a separator.
+Each split is a single tweet. Therefore this will be tweeted first:
 
     Печально подносить лекарство,
     Вздыхать и думать про себя:
@@ -82,11 +82,11 @@ In one's twitter feed it will become a well separated stanza:
     
 
 There is a counter `current_pos` which stores the state of the bot. 
-Initially it is zero. I.e. on the first day, the bot takes the file
-number zero from the `/tweets` folder, and publishes it. 
+Initially it is equal to zero. I.e. on the first day, the bot takes the 
+file number zero from the `/tweets` folder, and publishes it. 
 After a successful tweet the current position is incremented. 
 The next day the bot will take the next tweet. On the `n`-th day the bot 
-will take the `n`-th file, as it stated in the `current_pos`. 
+will take the `n`-th file, as it is stated in the `current_pos`. 
 But if one day the bot is unable to tweet
 for some reason, the `current_pos` remains the same, and as soon as the
 bot is back to live, it continues from where it has stopped.
@@ -99,5 +99,5 @@ Contents of the bot
   all those tweets (`chopper.py`). Some tricky places (like *Girls'
   song*) were processed manually;
 * primitive statistics: followers count (`stat.py`)
-* script to remove all the tweets for the account 
+* the script to remove all the tweets for the account 
   (`remove_all_tweets.py`)
