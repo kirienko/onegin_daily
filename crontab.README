@@ -1,0 +1,10 @@
+In order to set up a cron job, do the following:
+
+0) Make sure you have ``tweepy`` installed on your computer
+
+1) Edit your `crontab` as a user `my_user`:
+``$ crontab -u my_user -e``
+
+2) add the following lines to that table:
+0  6  *  *  * python /home/my_user/onegin/stat.py
+0  7  *  *  * python /home/my_user/onegin/onegin_paste_bot.py
