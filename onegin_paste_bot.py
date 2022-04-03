@@ -1,11 +1,8 @@
-#!/usr/bin/python
-#! encoding: utf8
-
-import tweepy
+import datetime as dt
 import os
 from time import sleep
-import datetime as dt
 
+import tweepy
 
 # authorization:
 # https://dev.twitter.com/apps
@@ -14,8 +11,10 @@ consumer_secret = 'your-consumer-very-strong-secret'
 access_token = 'your-access-token-which-is-also-long'
 access_token_secret = 'finally-your-access-token-here'
 
-auth = tweepy.OAuthHandler(consumer_key, consumer_secret)
-auth.set_access_token(access_token, access_token_secret)
+auth = tweepy.OAuth1UserHandler(consumer_key=consumer_key,
+                                consumer_secret=consumer_secret,
+                                access_token=access_token,
+                                access_token_secret=access_token_secret)
 api = tweepy.API(auth)
 
 
@@ -41,7 +40,7 @@ if pos < len(tweets):
 
     for t in tweet:
         text = t.strip()
-        api.update_status(text, 0, 57.060833, 28.919444)
+        api.update_status(text, lat=57.060833, long=28.919444)
         sleep(2)  # Time in seconds.
 
     update_pos(pos)
@@ -49,7 +48,7 @@ if pos < len(tweets):
 elif pos == len(tweets):
     next_start = dt.date.today() + dt.timedelta(days=offset)
     day, month = str(next_start.day), months[next_start.month - 1]
-    api.update_status("Следующее чтение романа начнётся {} {}.".format(day, month), 0, 59.9395, 30.3284)
+    api.update_status(f"Следующее чтение романа начнётся {day} {month}.", lat=59.9395, long=30.3284)
     update_pos(pos)
     with open('../iteration', 'r+') as fd_i:
         i = int(fd_i.read())

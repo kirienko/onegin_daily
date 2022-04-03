@@ -14,6 +14,7 @@ of that poem a day. Continuously. Forever. When it finishes the
 entire poem, it waits for three weeks and starts again.
 
 The bot is so old that initially it used `python 2.6`.
+In 2022, it was updated to `python 3.9` and `tweepy 4.8`.
 
 How it works
 ------------
