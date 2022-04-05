@@ -1,3 +1,8 @@
+"""
+Nowadays twitter provides much better statistics.
+Therefore you don't need to use this anymore.
+"""
+
 from datetime import date
 
 import tweepy
@@ -14,7 +19,7 @@ auth = tweepy.OAuth1UserHandler(consumer_key=consumer_key,
                                 access_token=access_token,
                                 access_token_secret=access_token_secret)
 api = tweepy.API(auth)
-user = api.get_user()
+user = api.get_user(screen_name='onegin_daily')
 date = date.today().isoformat()
 flwrs = user.followers_count
 with open('/home/my_user/onegin/stat/followers.log', 'a') as fd:
