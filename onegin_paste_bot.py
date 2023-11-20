@@ -6,10 +6,10 @@ import tweepy
 
 # authorization:
 # https://dev.twitter.com/apps
-consumer_key = 'your-consumer-key'
-consumer_secret = 'your-consumer-very-strong-secret'
-access_token = 'your-access-token-which-is-also-long'
-access_token_secret = 'finally-your-access-token-here'
+consumer_key = os.environ.get('CONSUMER_KEY') or 'your-consumer-key'
+consumer_secret = os.environ.get('CONSUMER_SECRET') or 'your-consumer-very-strong-secret'
+access_token = os.environ.get('ACCESS_TOKEN') or 'your-access-token-which-is-also-long'
+access_token_secret = os.environ.get('ACCESS_TOKEN_SECRET') or 'finally-your-access-token-here'
 
 auth = tweepy.OAuth1UserHandler(consumer_key=consumer_key,
                                 consumer_secret=consumer_secret,
@@ -25,9 +25,9 @@ def update_pos(_pos):
 
 months = ['января', 'февраля', 'марта', 'апреля', 'мая', 'июня',
           'июля', 'августа', 'сентября', 'октября', 'ноября', 'декабря']
-offset = 21     # число дней до следующей итерации
+offset = 21     # number of days till the next iteration
 
-os.chdir('/home/my_user/onegin/tweets/')
+os.chdir('./tweets/')
 tweets = sorted(os.listdir('.'))
 tweets = [t for t in tweets if '.txt' in t]
 with open('current_pos') as p:

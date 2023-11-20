@@ -92,6 +92,17 @@ But if one day the bot is unable to tweet
 for some reason, the `current_pos` remains the same, and as soon as the
 bot is back to live, it continues from where it has stopped.
 
+Deployment
+----------
+Since 2013, the bot was running on a private server (under the table in some
+academic institute). Unfortunately, due to the well-known events in 2022, 
+Twitter was banned in Russia. The server still sends the API requests though...
+
+Now the bot uses GitHub CI, see the `.github` directory:
+- the CI is triggered via `cron`
+- it runs a Linux VM and tweets from it
+- it saves (commits) the current position
+
 Contents of the bot
 -------------------
 * the bot itself: `onegin_paste_bot.py`;
