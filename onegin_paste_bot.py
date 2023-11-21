@@ -11,12 +11,16 @@ consumer_secret = os.environ.get('CONSUMER_SECRET') or 'your-consumer-very-stron
 access_token = os.environ.get('ACCESS_TOKEN') or 'your-access-token-which-is-also-long'
 access_token_secret = os.environ.get('ACCESS_TOKEN_SECRET') or 'finally-your-access-token-here'
 
-auth = tweepy.OAuth1UserHandler(consumer_key=consumer_key,
-                                consumer_secret=consumer_secret,
-                                access_token=access_token,
-                                access_token_secret=access_token_secret)
-api = tweepy.API(auth)
+# auth = tweepy.OAuth1UserHandler(consumer_key=consumer_key,
+#                                 consumer_secret=consumer_secret,
+#                                 access_token=access_token,
+#                                 access_token_secret=access_token_secret)
+# api = tweepy.API(auth)
 
+client = tweepy.Client(
+    consumer_key=consumer_key, consumer_secret=consumer_secret,
+    access_token=access_token, access_token_secret=access_token_secret
+)
 
 def update_pos(_pos):
     with open('current_pos', 'w') as p:
@@ -40,7 +44,8 @@ if pos < len(tweets):
 
     for t in tweet:
         text = t.strip()
-        api.update_status(text, lat=57.060833, long=28.919444)
+        # api.update_status(text, lat=57.060833, long=28.919444)
+        response = client.create_tweet(text=text)
         sleep(2)  # Time in seconds.
 
     update_pos(pos)
@@ -48,7 +53,8 @@ if pos < len(tweets):
 elif pos == len(tweets):
     next_start = dt.date.today() + dt.timedelta(days=offset)
     day, month = str(next_start.day), months[next_start.month - 1]
-    api.update_status(f"Следующее чтение романа начнётся {day} {month}.", lat=59.9395, long=30.3284)
+    # api.update_status(f"Следующее чтение романа начнётся {day} {month}.", lat=59.9395, long=30.3284)
+    response = client.create_tweet(text=f"Следующее чтение романа начнётся {day} {month}.")
     update_pos(pos)
     with open('../iteration', 'r+') as fd_i:
         i = int(fd_i.read())
