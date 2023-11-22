@@ -43,5 +43,5 @@ jobs:
           git config --global user.email github-actions
           git config --global user.name github-actions@github.com
           git add .
-          git commit -m "Daily CI Post"
+          git commit -m "Daily CI Post: update current position"
           git push
